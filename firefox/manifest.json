@@ -13,10 +13,9 @@
     "default_icon": {
       "48": "icon.svg",
       "96": "icon.svg"
-    },
-    "default_title": "startyparty"
+    }
   },
-  "permissions": ["tabs", "activeTab"],
+  "permissions": ["tabs", "activeTab", "cookies", "*://startyparty.dev/*"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
