@@ -7,6 +7,10 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
+  "host_permissions": [
+    "*://startyparty.dev/*"
+  ],
+  "permissions": ["tabs", "activeTab", "cookies"],
   "background": {
     "service_worker": "newtab.js"
   },
@@ -23,8 +27,7 @@
       "32": "icon--alt.png",
       "128": "icon--alt.png"
     },
-    "default_title": "startyparty",
-    "default_popup": "popup.html"
+    "default_title": "startyparty"
   },
 
   "manifest_version": 3
