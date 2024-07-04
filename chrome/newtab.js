@@ -47,7 +47,7 @@ async function sendWebsiteToApi(tab) {
   const token = await fetchTokenOrRedirect(tab.cookieStoreId);
 
   if (!token) {
-    // Doesnt work
+    // Doesnt work need to check.
     chrome.action.setIcon({
       path: "icon--alt_red.png",
     });

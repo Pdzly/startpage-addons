@@ -7,6 +7,10 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
+  "host_permissions": [
+    "*://startyparty.dev/*"
+  ],
+  "permissions": ["tabs", "activeTab", "cookies"],
   "background": {
     "service_worker": "newtab.js"
   },
