@@ -1,6 +1,5 @@
+const homepageUrl = "https://startyparty.dev/";
 async function redirectNewTab() {
-  const homepageUrl = "https://startyparty.dev";
-
   await chrome.windows.getCurrent(async (window) => {
     await chrome.tabs.query(
       { active: true, windowId: window.id },
@@ -31,7 +30,6 @@ async function fetchTokenOrRedirect(store) {
   if (!token) {
     await chrome.tabs.create({
       url: homepageUrl + "login",
-      cookieStoreId: store,
     });
     return;
   }
@@ -77,3 +75,31 @@ function handleClick() {
 }
 
 chrome.action.onClicked.addListener(handleClick);
+
+chrome.contextMenus.create(
+  {
+    id: "startyparty-save-bookmark",
+    title: "Save to StartyParty",
+    contexts: ["link"],
+  },
+  () => {
+    if (chrome.runtime.lastError) {
+      console.error(
+        "Error creating context menu item:",
+        chrome.runtime.lastError
+      );
+    }
+  }
+);
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  switch (info.menuItemId) {
+    case "startyparty-save-bookmark":
+      sendWebsiteToApi({
+        url: info.linkUrl,
+        title: info.linkText,
+        favIconUrl: undefined,
+      });
+
+      break;
+  }
+});

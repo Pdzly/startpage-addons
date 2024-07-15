@@ -15,7 +15,7 @@
       "96": "icon.svg"
     }
   },
-  "permissions": ["tabs", "activeTab", "cookies", "*://startyparty.dev/*"],
+  "permissions": ["tabs", "activeTab", "cookies", "contextMenus", "*://startyparty.dev/*"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },

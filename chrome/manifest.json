@@ -10,7 +10,7 @@
   "host_permissions": [
     "*://startyparty.dev/*"
   ],
-  "permissions": ["tabs", "activeTab", "cookies"],
+  "permissions": ["tabs", "activeTab", "cookies", "contextMenus"],
   "background": {
     "service_worker": "newtab.js"
   },

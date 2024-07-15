@@ -82,3 +82,29 @@ function handleClick() {
 }
 
 browser.browserAction.onClicked.addListener(handleClick);
+
+browser.contextMenus.create(
+  {
+    id: "startyparty-save-bookmark",
+    title: "Save to StartyParty",
+    contexts: ["link"],
+  },
+  () => {
+    if (browser.runtime.lastError) {
+      console.error("Error creating context menu item:", browser.runtime.lastError);
+    }
+  }
+);
+
+browser.contextMenus.onClicked.addListener((info, tab) => {
+  switch (info.menuItemId) {
+    case "startyparty-save-bookmark":
+      sendWebsiteToApi({
+        url: info.linkUrl,
+        title: info.linkText,
+        favIconUrl: undefined
+      })
+
+      break;
+  }
+});
